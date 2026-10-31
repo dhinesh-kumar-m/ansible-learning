@@ -1,0 +1,25 @@
+# Ansible temporary files
+*.retry
+
+# Ansible Vault passwords
+.vault_pass
+vault-password.txt
+
+# SSH private keys
+*.pem
+*.key
+id_rsa
+id_ed25519
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Environment files
+.env
+.env.*
+
+# Editor files
+.vscode/
+.idea/
