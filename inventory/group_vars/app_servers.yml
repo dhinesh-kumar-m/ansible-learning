@@ -1,0 +1,4 @@
+---
+app_name: tpstreams
+app_port: 8000
+environment: production

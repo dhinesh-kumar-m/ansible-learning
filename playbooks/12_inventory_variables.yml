@@ -1,0 +1,16 @@
+---
+- name: Learn inventory variables
+  hosts: app_servers
+  gather_facts: false
+
+  tasks:
+    - name: Display application details
+      ansible.builtin.debug:
+        msg: |
+          Application: {{ app_name }}
+          Port: {{ app_port }}
+          Environment: {{ environment }}
+
+    - name: Display server-specific role
+      ansible.builtin.debug:
+        msg: "Server role: {{ server_role | default('not defined') }}"
