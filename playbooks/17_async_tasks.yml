@@ -1,0 +1,25 @@
+---
+- name: Learn Ansible asynchronous tasks
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Start background task
+      ansible.builtin.command:
+        cmd: sleep 10
+      async: 30
+      poll: 0
+      register: background_job
+
+    - name: Wait for background task to finish
+      ansible.builtin.async_status:
+        jid: "{{ background_job.ansible_job_id }}"
+      register: job_result
+      until: job_result.finished
+      retries: 15
+      delay: 2
+
+    - name: Display completion message
+      ansible.builtin.debug:
+        msg: "Background task completed successfully!"
