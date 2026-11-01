@@ -1,0 +1,30 @@
+---
+- name: Learn Ansible error handling
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Demonstrate block rescue and always
+      block:
+        - name: Execute a successful task
+          ansible.builtin.debug:
+            msg: "Task 1 completed successfully"
+
+        - name: Execute a task that fails
+          ansible.builtin.command:
+            cmd: /bin/false
+
+        - name: This task will be skipped
+          ansible.builtin.debug:
+            msg: "You won't see this message"
+
+      rescue:
+        - name: Handle the failure
+          ansible.builtin.debug:
+            msg: "Something failed! Running rescue tasks."
+
+      always:
+        - name: Execute cleanup message
+          ansible.builtin.debug:
+            msg: "Always block executed."
