@@ -1,0 +1,27 @@
+---
+- name: Learn Ansible templates
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    app_name: tpstreams
+    app_port: 8000
+    environment: production
+
+  tasks:
+    - name: Generate application configuration
+      ansible.builtin.template:
+        src: templates/app.conf.j2
+        dest: /tmp/ansible-app.conf
+        mode: "0644"
+
+    - name: Display generated configuration
+      ansible.builtin.command:
+        cmd: cat /tmp/ansible-app.conf
+      register: config_output
+      changed_when: false
+
+    - name: Show configuration
+      ansible.builtin.debug:
+        var: config_output.stdout_lines

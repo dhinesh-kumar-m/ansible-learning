@@ -1,0 +1,11 @@
+# Application configuration
+
+application={{ app_name }}
+port={{ app_port }}
+environment={{ environment }}
+
+{% if environment == "production" %}
+debug=false
+{% else %}
+debug=true
+{% endif %}
