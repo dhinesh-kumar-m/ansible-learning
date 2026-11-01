@@ -1,0 +1,18 @@
+---
+- name: Learn rolling deployments
+  hosts: app_servers
+  gather_facts: false
+  serial: 1
+
+  tasks:
+    - name: Start deployment
+      ansible.builtin.debug:
+        msg: "Starting deployment on {{ inventory_hostname }}"
+
+    - name: Simulate application deployment
+      ansible.builtin.debug:
+        msg: "Deploying application on {{ inventory_hostname }}"
+
+    - name: Complete deployment
+      ansible.builtin.debug:
+        msg: "Deployment completed on {{ inventory_hostname }}"
