@@ -1,0 +1,25 @@
+---
+- name: Learn Ansible Vault
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars_files:
+    - vars/secrets.yml
+
+  tasks:
+    - name: Verify that secrets were loaded
+      ansible.builtin.assert:
+        that:
+          - db_username is defined
+          - db_password is defined
+          - api_token is defined
+        success_msg: "All encrypted variables were loaded successfully!"
+
+    - name: Display database username
+      ansible.builtin.debug:
+        msg: "Database username: {{ db_username }}"
+
+    - name: Confirm password is available without revealing it
+      ansible.builtin.debug:
+        msg: "Database password is loaded successfully."
