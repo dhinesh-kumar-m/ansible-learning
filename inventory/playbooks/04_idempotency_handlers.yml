@@ -1,0 +1,20 @@
+---
+- name: Learn idempotency and handlers
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Create a demo configuration file
+      ansible.builtin.copy:
+        content: |
+          application: tpstreams
+          port: 8000
+          environment: learning
+        dest: /tmp/ansible-demo.conf
+      notify: Demo configuration changed
+
+  handlers:
+    - name: Demo configuration changed
+      ansible.builtin.debug:
+        msg: "Configuration changed! Handler executed."
