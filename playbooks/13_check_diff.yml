@@ -1,0 +1,15 @@
+---
+- name: Learn Ansible check and diff modes
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Create demo configuration
+      ansible.builtin.copy:
+        content: |
+          application: tpstreams
+          port: 8000
+          environment: staging
+        dest: /tmp/ansible-check-demo.yml
+        mode: "0644"
