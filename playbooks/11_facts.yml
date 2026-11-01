@@ -1,0 +1,33 @@
+---
+- name: Learn Ansible facts
+  hosts: localhost
+  connection: local
+  gather_facts: true
+
+  tasks:
+    - name: Display operating system details
+      ansible.builtin.debug:
+        msg: >
+          OS: {{ ansible_facts['distribution'] }}
+          Version: {{ ansible_facts['distribution_version'] }}
+
+    - name: Display hostname
+      ansible.builtin.debug:
+        var: ansible_facts['hostname']
+
+    - name: Display CPU information
+      ansible.builtin.debug:
+        msg: "CPU cores: {{ ansible_facts['processor_vcpus'] }}"
+
+    - name: Display memory information
+      ansible.builtin.debug:
+        msg: "Total memory: {{ ansible_facts['memtotal_mb'] }} MB"
+
+    - name: Display kernel version
+      ansible.builtin.debug:
+        var: ansible_facts['kernel']
+
+    - name: Display Ubuntu-specific message
+      ansible.builtin.debug:
+        msg: "This machine is running Ubuntu!"
+      when: ansible_facts['distribution'] == "Ubuntu"
