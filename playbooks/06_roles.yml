@@ -1,0 +1,8 @@
+---
+- name: Learn Ansible roles
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  roles:
+    - app_config

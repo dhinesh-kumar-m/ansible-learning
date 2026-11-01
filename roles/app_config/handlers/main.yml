@@ -1,0 +1,4 @@
+---
+- name: Configuration updated
+  ansible.builtin.debug:
+    msg: "Application configuration has been updated!"
