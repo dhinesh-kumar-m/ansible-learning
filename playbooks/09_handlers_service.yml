@@ -1,0 +1,29 @@
+---
+- name: Learn Ansible handlers with Nginx
+  hosts: localhost
+  connection: local
+  become: true
+  gather_facts: false
+
+  tasks:
+    - name: Deploy Nginx demo configuration
+      ansible.builtin.template:
+        src: templates/nginx-demo.conf.j2
+        dest: /etc/nginx/conf.d/ansible-demo.conf
+        owner: root
+        group: root
+        mode: "0644"
+      notify:
+        - Validate Nginx configuration
+        - Restart Nginx
+
+  handlers:
+    - name: Validate Nginx configuration
+      ansible.builtin.command:
+        cmd: nginx -t
+      changed_when: false
+
+    - name: Restart Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
