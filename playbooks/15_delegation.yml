@@ -1,0 +1,15 @@
+---
+- name: Learn delegation and run_once
+  hosts: app_servers
+  gather_facts: false
+
+  tasks:
+    - name: Display managed server
+      ansible.builtin.debug:
+        msg: "Processing {{ inventory_hostname }}"
+
+    - name: Execute notification on Ansible controller
+      ansible.builtin.debug:
+        msg: "Deployment process started for all application servers."
+      delegate_to: localhost
+      run_once: true
