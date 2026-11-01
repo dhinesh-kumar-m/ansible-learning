@@ -1,0 +1,18 @@
+---
+- name: Learn Ansible playbooks and tasks
+  hosts: app_servers
+  gather_facts: false
+
+  tasks:
+    - name: Display a welcome message
+      ansible.builtin.debug:
+        msg: "Hello! Ansible is managing this server."
+
+    - name: Get server hostname
+      ansible.builtin.command:
+        cmd: hostname
+      register: hostname_output
+
+    - name: Display hostname
+      ansible.builtin.debug:
+        msg: "Server hostname is {{ hostname_output.stdout }}"
