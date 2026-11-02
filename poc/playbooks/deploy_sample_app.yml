@@ -1,0 +1,7 @@
+---
+- name: Deploy sample Nginx application
+  hosts: titan_servers
+  become: true
+  roles:
+    - docker
+    - sample_app
