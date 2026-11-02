@@ -1,6 +1,6 @@
 ---
 - name: Learn variables, loops and conditionals
-  hosts: app_servers
+  hosts: titan_servers
   gather_facts: true
 
   vars:

@@ -1,6 +1,6 @@
 ---
 - name: Learn rolling deployments
-  hosts: app_servers
+  hosts: titan_servers
   gather_facts: false
   serial: 1
 

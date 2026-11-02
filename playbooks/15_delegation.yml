@@ -1,6 +1,6 @@
 ---
 - name: Learn delegation and run_once
-  hosts: app_servers
+  hosts: titan_servers
   gather_facts: false
 
   tasks:

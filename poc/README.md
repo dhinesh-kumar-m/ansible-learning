@@ -61,6 +61,12 @@ poc/
 - SSH private key configured.
 - Required Ansible collections installed.
 
+Install Ansible:
+
+```bash
+sudo apt install ansible-core
+```
+
 ### Managed servers
 
 - Ubuntu 24.04.

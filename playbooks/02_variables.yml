@@ -1,6 +1,6 @@
 ---
 - name: Learn Ansible variables
-  hosts: app_servers
+  hosts: titan_servers
   gather_facts: false
 
   vars:
