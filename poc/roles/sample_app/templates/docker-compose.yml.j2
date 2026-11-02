@@ -1,0 +1,9 @@
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: "{{ app_name }}"
+    ports:
+      - "{{ app_port }}:{{ nginx_container_port }}"
+    volumes:
+      - "{{ app_directory }}/conf.d:/etc/nginx/conf.d:ro"
+    restart: unless-stopped

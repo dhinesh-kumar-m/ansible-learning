@@ -1,0 +1,15 @@
+---
+- name: Reload Nginx configuration
+  ansible.builtin.command:
+    argv:
+      - docker
+      - compose
+      - exec
+      - -T
+      - nginx
+      - nginx
+      - -s
+      - reload
+    chdir: "{{ app_directory }}"
+  changed_when: true
+  when: not ansible_check_mode

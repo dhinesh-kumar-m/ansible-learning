@@ -1,0 +1,15 @@
+server {
+    listen 80;
+    server_name _;
+
+    location / {
+        default_type text/plain;
+        return 200 "Hello from {{ inventory_hostname }} - {{ app_message }}\n";
+    }
+
+    location /health {
+        access_log off;
+        default_type text/plain;
+        return 200 "OK\n";
+    }
+}

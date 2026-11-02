@@ -1,0 +1,6 @@
+---
+app_name: titan-nginx-poc
+app_directory: /opt/titan-nginx-poc
+app_port: 8080
+nginx_container_port: 80
+app_message: "Second configuration update!"
